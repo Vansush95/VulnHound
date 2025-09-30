@@ -42,10 +42,11 @@ Ignores irrelevant mobile/iOS/Android CPEs (to focus only on desktop software).
 ### Requirements
 
 - Python **3.9+**
+- Chrome Browser
 - Windows (for registry software enumeration)
 - Dependencies:  
   ```bash
-  pip install requests aiohttp beautifulsoup4
+  pip install requests aiohttp beautifulsoup4 pyppeteer
   ```
 
 > ⚠️ **Note:** The scanner uses the NVD API. For higher rate limits, you can set your API key:
