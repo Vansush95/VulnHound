@@ -72,12 +72,18 @@ The scanner will only analyze installed software matching these names.
 
 ## 🧠 Usage
 
+### Installation
+
+```bash
+git clone https://github.com/Vansush95/VulnHound.git
+```
+
 Run the scanner in **automatic** or **manual** mode:
 
 ### 1️⃣ Auto Mode — Scan Installed Software
 
 ```bash
-python vulnhound.py
+python VulnHound.py
 ```
 
 Then select:
