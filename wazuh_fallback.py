@@ -37,7 +37,7 @@ from pyppeteer import launch
 # ---------------- Configuration ---------------- #
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # adjust if needed
 NAV_TIMEOUT = 60000  # ms
-DETAIL_FETCH_DELAY = 1.5  # seconds between CVE detail fetches
+DETAIL_FETCH_DELAY = 3  # seconds between CVE detail fetches
 
 # Fix Windows asyncio event loop
 if sys.platform == "win32":
@@ -239,3 +239,4 @@ if __name__ == "__main__":
         print(f"  Severity: {cve['severity']}, Score: {cve['cvss_score']}")
         print(f"  Desc: {cve['description']}")
         print(f"  Link: {cve['wazuh_cti_link']}\n")
+
