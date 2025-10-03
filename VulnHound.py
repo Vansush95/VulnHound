@@ -320,7 +320,7 @@ def run_for_package(name, version, search_keyword=None, interesting_keywords=Non
         return
 
     # 1) Resolve CPE candidates from NVD
-    cpes = resolve_cpes(name, version, max_candidates=8)
+    cpes = resolve_cpes(search_keyword, version, max_candidates=8)
     if not cpes:
         print("  [INFO] No relevant CPEs found for this package.")
         # try fallback immediately if no CPEs
@@ -464,3 +464,4 @@ def main():
             
 if __name__ == "__main__":
     main()
+
