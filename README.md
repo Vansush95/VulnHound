@@ -96,11 +96,10 @@ VulnHound will:
 - Enumerate all installed software from the Windows registry  
 - Filter using `interesting_packages.json`  
 - Resolve CPEs via NVD  
-- Fetch CVEs (latest 25) and enrich them with Wazuh CTI data  
+- Fetch CVEs (latest 25) and enrich them with Wazuh CTI data
 - Fallback to Wazuh CTI when NVD returns no vulnerabilities
 
 ---
-
 ### 2️⃣ Manual Mode — Scan Specific Software
 
 ```bash
@@ -138,6 +137,14 @@ Enter version (optional): 127.0
 ```
 
 ---
+### 🔢 CVE Limit Per Package
+
+By default, VulnHound retrieves up to **25 CVEs per software package** when scanning.
+
+This behavior is controlled by the variable in VulnHound.py:
+```python
+PER_CPE_LIMIT = 25
+```
 
 ## 🧱 Architecture Overview
 
@@ -147,23 +154,24 @@ Enter version (optional): 127.0
  └───────────────┬───────────────┘
                  │
                  ▼
-      Filter “Interesting” Packages
+    Filter “Interesting” Packages
                  │
                  ▼
-   ┌─────────────────────────────────────┐
-   │ 1️⃣ NVD Query via CPE Resolution     │
-   └─────────────────────────────────────┘
-                 │
-         No CVEs found? ▼
-   ┌─────────────────────────────────────┐
-   │ 2️⃣ Wazuh CTI Fallback (keyword+ver) │
-   └─────────────────────────────────────┘
+ ┌─────────────────────────────────────┐
+ │ 1️⃣ NVD Query via CPE Resolution     │
+ └─────────────────────────────────────┘
                  │
                  ▼
-        CVE Details Enrichment (async)
+          No CVEs found? 
+ ┌─────────────────────────────────────┐
+ │ 2️⃣ Wazuh CTI Fallback (keyword+ver) │
+ └─────────────────────────────────────┘
                  │
                  ▼
-         Report to Console / Future JSON
+   CVE Details Enrichment (async)
+                 │
+                 ▼
+   Report to Console / Future JSON
 ```
 
 ---
@@ -201,7 +209,12 @@ Developed by **Lewis Rakotomalala**
 Special thanks to the **Wazuh Community** for the CTI platform and resources that made this project possible.
 
 ---
+### 🌐 About the Project
 
+This project was developed as part of the **[Wazuh Ambassadors Program](https://wazuh.com/ambassadors-program/?utm_source=ambassadors&utm_medium=referral&utm_campaign=ambassadors+program)**.  
+It aims to support the Wazuh community by providing an open-source vulnerability scanning tool for legacy Windows systems.
+
+---
 ## 📜 License
 
 MIT License
